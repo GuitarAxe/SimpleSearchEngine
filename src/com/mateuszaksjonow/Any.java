@@ -9,7 +9,7 @@ public class Any extends Strategy {
     public boolean search(Map<String, Set<String>> map, String data) {
         String[] splittedData = data.toLowerCase().split(" ");
         for (String string : splittedData) {
-            if (map.containsKey(string.toLowerCase())) {
+            if (map.containsKey(string)) {
                 Set<String> print = map.get(string);
                 for (String string2 : print) {
                     System.out.println(string2);
@@ -19,8 +19,6 @@ public class Any extends Strategy {
                 return false;
             }
         }
-
         return true;
     }
-
 }

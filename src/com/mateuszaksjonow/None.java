@@ -2,31 +2,25 @@ package com.mateuszaksjonow;
 
 import java.util.*;
 
-public class None {
+public class None extends Strategy {
 
-    public boolean search(Set<String> set, String data) {
+    @Override
+    public boolean search(Map<String, Set<String>> map, String data) {
 
-        Set<String> newSet = new HashSet<>();
-        String[] splittedData = data.split(" ");
-
-        for (String string : set) {
-            boolean match = false;
-            String[] splittedSet = string.split(" ");
-            for (String string1 : splittedData) {
-                for (String string2 : splittedSet) {
-                    if (string1.equalsIgnoreCase(string2)) {
-                        match = true;
-                    }
+        Set<String> set = new HashSet<>();
+        boolean isEmpty = true;
+        String[] splittedData = data.toLowerCase().split(" ");
+        for (String string1 : splittedData) {
+            for (String string2 : map.keySet()) {
+                if (!string1.equalsIgnoreCase(string2)) {
+                    set.addAll(map.get(string2));
+                    isEmpty = false;
                 }
             }
-            if (!match) {
-                newSet.add(string);
-            }
         }
-
-        if (!newSet.isEmpty()) {
+        if (!isEmpty) {
             System.out.println("Found people:");
-            for (String string : newSet) {
+            for (String string : set) {
                 System.out.println(string);
             }
         }else {

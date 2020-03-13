@@ -7,7 +7,7 @@ public class All extends Strategy {
 
     @Override
     public boolean search(Map<String, Set<String>> map, String data) {
-        if (map.containsKey(data)) {
+        if (map.containsKey(data.toLowerCase())) {
             System.out.println("Found people:");
             Set<String> print = map.get(data);
             for (String string : print) {

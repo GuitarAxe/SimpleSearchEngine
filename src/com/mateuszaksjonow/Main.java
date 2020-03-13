@@ -42,7 +42,7 @@ public class Main {
                     "0. Exit");
             switch (scanner.nextLine()) {
                 case "1":
-                    searchStrategy(scanner, map, scanner, listOfPeople);
+                    searchStrategy(scanner, map, scanner);
                     break;
                 case "2":
                     System.out.println("=== List of people ===");
@@ -58,7 +58,7 @@ public class Main {
         }
     }
 
-    public static void searchStrategy(Scanner scanner1, Map<String, Set<String>> map, Scanner scanner2, Set<String> set) {
+    public static void searchStrategy(Scanner scanner1, Map<String, Set<String>> map, Scanner scanner2) {
         System.out.println("Select a matching strategy: ALL, ANY, NONE:");
         String string = scanner1.nextLine();
         String data;
@@ -79,10 +79,8 @@ public class Main {
                 System.out.println("Enter name or email:");
                 data = scanner2.nextLine();
                 None strategyNone = new None();
-                strategyNone.search(set, data);
+                strategyNone.search(map, data);
                 break;
         }
     }
-
-//
 }
